@@ -90,9 +90,9 @@
       <!-- VBox a la derecha, anclado -->
       <VBox styleClass="vbox-style" AnchorPane.topAnchor="26.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" prefWidth="200.0">
          <children>
-            <Button styleClass="button-style" text="Añadir Empresa" maxWidth="Infinity"/>
-            <Button styleClass="button-style" text="Añadir Persona" maxWidth="Infinity"/>
-            <Button styleClass="button-style" text="Solicitud de Crédito" maxWidth="Infinity"/>
+            <Button fx:id="nuevaEmpresa" styleClass="button-style" text="Añadir Empresa" maxWidth="Infinity"/>
+            <Button fx:id="nuevaPersona" styleClass="button-style" text="Añadir Persona" maxWidth="Infinity"/>
+            <Button fx:id="nevaSolicitud" styleClass="button-style" text="Solicitud de Crédito" maxWidth="Infinity"/>
          </children>
       </VBox>
    </children>
