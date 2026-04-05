@@ -28,12 +28,12 @@
             </Menu>
             <Menu styleClass="menu-style" text="Ayuda">
                <items>
-                  <MenuItem text="About" />
+                  <MenuItem text="Sobre" />
                </items>
             </Menu>
             <Menu styleClass="menu-style" text="Utilidad">
                <items>
-                  <MenuItem text="Action 1" />
+                  <MenuItem fx:id="cambiarEstilo" text="Cambiar Estilo Visual" onAction="#cambiarCSS" />
                </items>
             </Menu>
          </menus>

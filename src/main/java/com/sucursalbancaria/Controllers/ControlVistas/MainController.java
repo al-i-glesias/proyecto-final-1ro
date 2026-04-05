@@ -7,26 +7,22 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import com.sucursalbancaria.App;
 import com.sucursalbancaria.Controllers.Logica.SucursalBancaria;
 import com.sucursalbancaria.Models.Solicitantes.Empresa;
 import com.sucursalbancaria.Models.Solicitantes.Persona;
 import com.sucursalbancaria.Models.Solicitantes.Solicitante;
 import com.sucursalbancaria.Models.Solicitudes.SolicitudCredito;
 
-import javafx.beans.binding.IntegerBinding;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.text.Text;
-import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.LongStringConverter;
@@ -34,6 +30,9 @@ import javafx.util.converter.LongStringConverter;
 public class MainController {
     
     SucursalBancaria sucursalBancaria = new SucursalBancaria();
+
+    @FXML
+    MenuItem cambiarEstilo;
 
     @FXML
     MenuItem nuevoBtn;
@@ -55,7 +54,6 @@ public class MainController {
 
     @FXML
     Button nuevaSolicitud;
-
 
     @FXML
     public void initialize(){
@@ -248,6 +246,26 @@ public class MainController {
 
 
     //UTILIDAD
+
+    private static boolean estiloCambiado = false;
+
+    public void cambiarCSS(){
+
+        if(estiloCambiado){
+
+            App.scene.getStylesheets().clear();
+            App.scene.getStylesheets().add(getClass().getResource("/Styles/MainStyle.css").toExternalForm());
+            estiloCambiado = false;
+        }
+        else{
+            
+            App.scene.getStylesheets().clear();
+            App.scene.getStylesheets().add(getClass().getResource("/Styles/EstiloAlternativo.css").toExternalForm());
+            estiloCambiado = true;
+
+        }
+        
+    }
 
     public Map<String, String> nombresColumnasEmpresa() {
         Map<String, String> nombresColumnas = new HashMap<>();
