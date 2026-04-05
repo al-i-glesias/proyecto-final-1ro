@@ -10,6 +10,15 @@ public class Empresa extends Solicitante {
     private Long codigo;
 
 
+    public Empresa() throws Exception {
+        super("", 0.0, "");
+        nombreDirector = "";
+        direccionDirector = "";
+        gananciaPromedioAnual = 0.0;
+        cantidadTrabajadores = 0;
+        ministerio = "";
+        codigo = 0L;
+    }
     public Empresa(String nombreSolicitante, double valorCredito, String direccionSolicitante,
             String nombreDirector, String direccionDirector, double gananciaPromedioAnual, int cantidadTrabajadores,
             String ministerio, Long codigo) throws Exception {
@@ -37,6 +46,7 @@ public class Empresa extends Solicitante {
         if(cantidadTrabajadores <= 100) return "pequena";
         else if(cantidadTrabajadores > 100 & cantidadTrabajadores <= 300) return "mediana";
         else return "grande";
+
     }
 
 

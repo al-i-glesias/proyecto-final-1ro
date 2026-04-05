@@ -7,10 +7,10 @@ import com.sucursalbancaria.Models.Solicitudes.SolicitudPersonal;
 
 public class SucursalBancaria {
     
-    ControladorEmpresas controladorEmpresas;
-    ControladorPersonas controladorPersonas;
-    ControladorSolicitudEmpresarial controladorSolicitudEmpresarial;
-    ControladorSolicitudPersonal controladorSolicitudPersonal;
+    public ControladorEmpresas controladorEmpresas;
+    public ControladorPersonas controladorPersonas;
+    public ControladorSolicitudEmpresarial controladorSolicitudEmpresarial;
+    public ControladorSolicitudPersonal controladorSolicitudPersonal;
 
     public SucursalBancaria(){
 

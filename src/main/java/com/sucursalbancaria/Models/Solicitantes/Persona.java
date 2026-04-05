@@ -7,7 +7,13 @@ public class Persona extends Solicitante {
     private int personasQueSustenta = 1;
 
 
-    
+    public Persona() throws Exception{
+
+        super("", 0.0, "");
+        CI = 0L;
+        salarioNucleo = 0.0;
+        personasQueSustenta = 1;
+    }
     public Persona(String nombreSolicitante, double valorCredito, String direccionSolicitante, Long CI,
             double salarioNucleo, int personasQueSustenta) throws Exception {
 

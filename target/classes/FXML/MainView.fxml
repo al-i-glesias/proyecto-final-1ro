@@ -23,7 +23,7 @@
                   <MenuItem fx:id="nuevoBtn" styleClass="menuitem-style" onAction="#nuevoArchivo" text="Nuevo" />
                   <MenuItem fx:id="cargarBtn" styleClass="menuitem-style" text="Cargar" />
                   <MenuItem styleClass="menuitem-style" text="Guardar" />
-                  <MenuItem styleClass="menuitem-style" text="Cerrar" />
+                  <MenuItem onAction="#cerrarApp" styleClass="menuitem-style" text="Cerrar" />
                </items>
             </Menu>
             <Menu styleClass="menu-style" text="Ayuda">
@@ -46,14 +46,14 @@
                   <TableView fx:id="tablaEmpresas">
                      <columns>
                         <TableColumn text="Nombre"/>
-                        <TableColumn text="Valor del credito"/>
+                        <TableColumn text="Valor del Crédito"/>
                         <TableColumn text="Dirección"/>
                         <TableColumn text="Director"/>
-                        <TableColumn text="Direccion del Director"/>
+                        <TableColumn text="Dirección del Director"/>
                         <TableColumn text="Ganancia Promedio Anual"/>
                         <TableColumn text="Cantidad de Trabajadores"/>
                         <TableColumn text="Ministerio"/>
-                        <TableColumn text="Codigo"/>
+                        <TableColumn text="Código"/>
                      </columns>
                   </TableView>
                </content>
@@ -63,11 +63,11 @@
                   <TableView fx:id="tablaPersonas">
                      <columns>
                         <TableColumn text="Nombre"/>
-                        <TableColumn text="Valor del Credito"/>
-                        <TableColumn text="Direccion"/>
+                        <TableColumn text="Valor del Crédito"/>
+                        <TableColumn text="Dirección"/>
                         <TableColumn text="CI"/>
-                        <TableColumn text="Salario del nucleo familiar"/>
-                        <TableColumn text="Personas que sustenta"/>
+                        <TableColumn text="Salario del Núcleo Familiar"/>
+                        <TableColumn text="Personas que Sustenta"/>
                      </columns>
                   </TableView>
                </content>
@@ -90,9 +90,9 @@
       <!-- VBox a la derecha, anclado -->
       <VBox styleClass="vbox-style" AnchorPane.topAnchor="26.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" prefWidth="200.0">
          <children>
-            <Button fx:id="nuevaEmpresa" styleClass="button-style" text="Añadir Empresa" maxWidth="Infinity"/>
-            <Button fx:id="nuevaPersona" styleClass="button-style" text="Añadir Persona" maxWidth="Infinity"/>
-            <Button fx:id="nevaSolicitud" styleClass="button-style" text="Solicitud de Crédito" maxWidth="Infinity"/>
+            <Button fx:id="nuevaEmpresa" onAction="#agregarEmpresa" styleClass="button-style" text="Añadir Empresa" maxWidth="Infinity"/>
+            <Button fx:id="nuevaPersona" onAction="#agregarPersona" styleClass="button-style" text="Añadir Persona" maxWidth="Infinity"/>
+            <Button fx:id="nevaSolicitud" onAction="#agregarSolicitud" styleClass="button-style" text="Solicitud de Crédito" maxWidth="Infinity"/>
          </children>
       </VBox>
    </children>
