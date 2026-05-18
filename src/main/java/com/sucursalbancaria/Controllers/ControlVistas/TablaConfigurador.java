@@ -8,11 +8,18 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
-import javafx.util.converter.DoubleStringConverter;
-import javafx.util.converter.IntegerStringConverter;
-import javafx.util.converter.LongStringConverter;
 
 public class TablaConfigurador {
+
+    public static <T> void configurarColumnaDouble(TableColumn<T, Double> columna, String nombreCampo) {
+
+        columna.setCellValueFactory(new PropertyValueFactory<>(nombreCampo));
+        columna.setCellFactory(TextFieldTableCell.forTableColumn(DOUBLE_CONVERTER));
+        
+    }
+    
+    // Formateador que evita la notación científica
+    private static final DoubleSinNotacionConverter DOUBLE_CONVERTER = new DoubleSinNotacionConverter();
     
     public static <T> void configurarColumnas(TableView<?> tabla, 
                                                Map<String, String> nombresColumnas, 
@@ -67,13 +74,22 @@ public class TablaConfigurador {
                 configurarColumnaEditable(c, nombreCampo, campo, TextFieldTableCell.forTableColumn());
             } else if (campo.getType() == Double.class || campo.getType() == double.class) {
                 TableColumn<T, Double> c = (TableColumn<T, Double>) columna;
-                configurarColumnaEditable(c, nombreCampo, campo, TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+                // Usar el converter que evita notación científica
+                c.setCellValueFactory(new PropertyValueFactory<>(nombreCampo));
+                c.setCellFactory(TextFieldTableCell.forTableColumn(DOUBLE_CONVERTER));
+                c.setOnEditCommit(e -> {
+                    try {
+                        campo.set(e.getRowValue(), e.getNewValue());
+                    } catch (IllegalAccessException ex) {
+                        System.out.println("Error al asignar valor: " + ex.getMessage());
+                    }
+                });
             } else if (campo.getType() == Integer.class || campo.getType() == int.class) {
                 TableColumn<T, Integer> c = (TableColumn<T, Integer>) columna;
-                configurarColumnaEditable(c, nombreCampo, campo, TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+                configurarColumnaEditable(c, nombreCampo, campo, TextFieldTableCell.forTableColumn(new javafx.util.converter.IntegerStringConverter()));
             } else if (campo.getType() == Long.class || campo.getType() == long.class) {
                 TableColumn<T, Long> c = (TableColumn<T, Long>) columna;
-                configurarColumnaEditable(c, nombreCampo, campo, TextFieldTableCell.forTableColumn(new LongStringConverter()));
+                configurarColumnaEditable(c, nombreCampo, campo, TextFieldTableCell.forTableColumn(new javafx.util.converter.LongStringConverter()));
             }
         } catch (ClassCastException e) {
             System.out.println("Error de tipo en la columna: " + columna.getText());
